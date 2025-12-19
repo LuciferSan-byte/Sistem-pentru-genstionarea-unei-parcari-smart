@@ -1,0 +1,18 @@
+#pragma once
+
+#include "LocParcare.h"
+
+class LocParcareCamion : public LocParcare {
+private:
+    double sarcinaMaxima;
+    int numarAxePermise;
+
+public:
+    LocParcareCamion(int id,
+                     const Dimensiune& dim,
+                     double sarcinaMaxima,
+                     int numarAxePermise);
+
+    bool acceptaVehicul(const Vehicul& v) const override;
+};
+
