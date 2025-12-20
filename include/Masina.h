@@ -16,7 +16,7 @@ public:
 	const Dimensiune& dim,
 	double greutate,
 	int numarUsi,
-	std::string tipCombustibil,
+	const std::string &tipCombustibil,
 	bool esteElectric
     );
     std::string categorieVehicul() const override; 
