@@ -16,6 +16,6 @@ public:
 	int capacitateMotor,
         bool areAtas
     );
-
+    bool esteElectric()const override; 
     std::string categorieVehicul() const override;
 };

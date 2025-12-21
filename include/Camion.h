@@ -16,6 +16,6 @@ public:
 	double sarcinaMaxima,
         int numarAxe
 	);
-    
+    bool esteElectric()const override;    
     std::string categorieVehicul() const override;
 };

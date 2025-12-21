@@ -14,3 +14,7 @@ Motocicleta::Motocicleta(int id,
 std::string Motocicleta::categorieVehicul() const{
     return "Motocicleta";
 }
+
+bool Motocicleta::esteElectric()const {
+    return false;
+}

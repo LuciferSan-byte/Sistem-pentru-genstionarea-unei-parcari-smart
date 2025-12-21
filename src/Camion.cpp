@@ -15,3 +15,6 @@ Camion::Camion(int id,
 std::string Camion::categorieVehicul() const {
     return "Camion";
 }
+bool Camion::esteElectric()const {
+    return false;
+}

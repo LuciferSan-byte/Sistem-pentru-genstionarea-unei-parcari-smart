@@ -7,7 +7,7 @@ class Masina : public Vehicul{
 private:
     int numarUsi;
     std::string tipCombustibil;
-    bool esteElectric;
+    bool electrica;
 
 public:
     Masina(
@@ -19,5 +19,6 @@ public:
 	const std::string &tipCombustibil,
 	bool esteElectric
     );
+    bool esteElectric()const override; 
     std::string categorieVehicul() const override; 
 };

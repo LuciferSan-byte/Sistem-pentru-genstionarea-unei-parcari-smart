@@ -19,6 +19,7 @@ public:
     virtual ~Vehicul() = default;
     Dimensiune obtineDimensiune()const;
     double obtineGreutate()const;
-
+    
+    virtual bool esteElectric()const  = 0;
     virtual std::string categorieVehicul() const  = 0;
 };

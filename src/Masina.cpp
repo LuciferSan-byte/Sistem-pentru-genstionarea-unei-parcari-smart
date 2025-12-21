@@ -6,15 +6,19 @@ Masina::Masina(int id,
     double greutate,
     int numarUsi,
     const std::string& tipCombustibil,
-    bool esteElectric
+    bool electrica
 )
     : Vehicul(id, numar, dim, greutate),  
       numarUsi(numarUsi),
       tipCombustibil(tipCombustibil),
-      esteElectric(esteElectric)
+      electrica(electrica)
 {
 }
 
 std::string Masina::categorieVehicul() const {
     return "Masina";
+}
+
+bool Masina::esteElectric()const{
+    return electrica;
 }
