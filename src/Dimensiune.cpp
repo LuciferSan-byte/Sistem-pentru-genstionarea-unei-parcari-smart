@@ -5,3 +5,9 @@ bool Dimensiune::incapeIn(const Dimensiune& alta) const{
 	    latime <= alta.latime &&
 	    inaltime <= alta.inaltime;
 }
+
+Dimensiune Dimensiune::pentruLocMasina(){return {5.0, 2.0, 2.0};}
+
+Dimensiune Dimensiune::pentruLocCamion(){return {10.0, 3.0, 4.0};}
+
+Dimensiune Dimensiune::pentruLocMoto(){return {return {3.0, 1.2, 1.5};}
