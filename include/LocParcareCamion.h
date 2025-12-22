@@ -1,7 +1,7 @@
 #pragma once
 
 #include "LocParcare.h"
-
+#include <iostream>
 class LocParcareCamion : public LocParcare {
 private:
     double sarcinaMaxima;

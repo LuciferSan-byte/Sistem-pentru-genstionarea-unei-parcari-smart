@@ -22,3 +22,4 @@ std::string Masina::categorieVehicul() const {
 bool Masina::esteElectric()const{
     return electrica;
 }
+int Masina::obtineNumarAxe()const {return 2;}

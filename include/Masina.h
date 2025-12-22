@@ -20,5 +20,6 @@ public:
 	bool esteElectric
     );
     bool esteElectric()const override; 
-    std::string categorieVehicul() const override; 
+    std::string categorieVehicul() const override;
+    int obtineNumarAxe()const override;
 };

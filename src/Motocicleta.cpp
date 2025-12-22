@@ -18,3 +18,4 @@ std::string Motocicleta::categorieVehicul() const{
 bool Motocicleta::esteElectric()const {
     return false;
 }
+int Motocicleta::obtineNumarAxe()const {return 2;}

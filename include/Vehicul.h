@@ -22,4 +22,5 @@ public:
     
     virtual bool esteElectric()const  = 0;
     virtual std::string categorieVehicul() const  = 0;
+    virtual int obtineNumarAxe()const = 0;
 };

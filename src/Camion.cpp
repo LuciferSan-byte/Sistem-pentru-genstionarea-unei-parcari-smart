@@ -18,3 +18,4 @@ std::string Camion::categorieVehicul() const {
 bool Camion::esteElectric()const {
     return false;
 }
+int Camion::obtineNumarAxe()const {return numarAxe;}
