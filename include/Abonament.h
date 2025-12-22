@@ -9,6 +9,7 @@ class Abonament {
 private:
     const int idAbonament;
     std::string tip;
+    bool esteActiv;
     std::chrono::system_clock::time_point start;
     std::chrono::system_clock::time_point expire;
 
@@ -17,7 +18,9 @@ public:
 	      std::string tipul);
 
     bool esteValid() const;
-    
+    bool esteActv() const;
+
+    void incepereAbonament();
     void reinoiesteAbonamentLunar();
     void reinoiesteAbonamentAnual();
 
