@@ -12,12 +12,13 @@ private:
     Abonament* abonament;
 
 public:
-    Sofer(int id, const std::string& nume, bool arePermisHandicap);
+    Sofer(const int id, const std::string& nume, bool arePermisHandicap);
 
-    bool arePermis() const;
+    bool arePermisH() const;
     bool areAbonament() const;
     Abonament* obtineAbonament() const;
 
     void seteazaAbonament(Abonament* abonament);
+    void stergeAbonament();
 };
 

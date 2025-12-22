@@ -16,7 +16,9 @@ void Abonament::incepereAbonament(){
     this->afiseazaInceputAbonament();
     this->afiseazaExpirareAbonament();
 }
-
+bool Abonament::esteActv()const{
+    return esteActiv;
+}
 bool Abonament::esteValid()const{
     return std::chrono::system_clock::now() < expire;
 }

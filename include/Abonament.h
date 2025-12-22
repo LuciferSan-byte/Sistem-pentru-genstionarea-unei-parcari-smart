@@ -16,7 +16,6 @@ private:
 public:
     Abonament(const int &id,
 	      std::string tipul);
-
     bool esteValid() const;
     bool esteActv() const;
 
