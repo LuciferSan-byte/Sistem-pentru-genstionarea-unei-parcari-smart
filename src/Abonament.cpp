@@ -10,6 +10,11 @@ Abonament::Abonament(const int &id,std::string tipul):
 void Abonament::incepereAbonament(){
      start = std::chrono::system_clock::now();
      expire = start + std::chrono::days{30};
+
+    std::cout << "---Abonament activat cu succes---";
+
+    this->afiseazaInceputAbonament();
+    this->afiseazaExpirareAbonament();
 }
 
 bool Abonament::esteValid()const{
@@ -37,17 +42,17 @@ std::chrono::system_clock::time_point Abonament::obtineExpire()const{
 void Abonament::afiseazaInceputAbonament()const{
     std::time_t t = std::chrono::system_clock::to_time_t(start);
     if(!t){
-	std::cout << "Nu exista Abonamnet activ";
+	std::cerr << "\nNu exista Abonamnet activ\n";
 	return;
     }
 
-    std::cout << "Abonamentul a fost activat pe data de : ";
+    std::cout << "\nAbonamentul a fost activat pe data de : ";
     std::cout << std::ctime(&t);
 }
 void Abonament::afiseazaExpirareAbonament()const{
     std::time_t t = std::chrono::system_clock::to_time_t(expire);
     if(!t){
-	std::cout << "Nu exista Abonamnet activ";
+	std::cerr << "\nNu exista Abonamnet activ\n";
 	return;
     }
 
