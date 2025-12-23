@@ -9,7 +9,6 @@ private:
 
 public:
     LocParcareElectric(int id,
-                       const Dimensiune& dim,
                        double putereIncarcare,
                        const std::string& tipConector);
 

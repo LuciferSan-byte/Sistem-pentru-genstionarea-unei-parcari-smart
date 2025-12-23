@@ -8,7 +8,6 @@ private:
 
 public:
     LocParcareMotocicleta(int id,
-                          const Dimensiune& dim,
                           int numarMaximMotociclete);
 
     bool acceptaVehicul(const Vehicul& v) const override;

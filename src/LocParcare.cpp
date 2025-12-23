@@ -1,8 +1,9 @@
 #include "LocParcare.h"
 #include "Dimensiune.h"
-LocParcare::LocParcare(int idLoc, const Dimensiune& dim)
-    : idLoc(idLoc), dimensiune(dim), ocupat(false),vehiculAcceptat("Masina")
+LocParcare::LocParcare(int idLoc)
+    : idLoc(idLoc), ocupat(false),vehiculAcceptat("Masina")
 {
+    dimensiune = Dimensiune::pentruLocMasina();
 }
 
 

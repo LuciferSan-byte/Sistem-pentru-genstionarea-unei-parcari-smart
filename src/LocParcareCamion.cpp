@@ -1,9 +1,12 @@
 #include "LocParcareCamion.h"
 
-LocParcareCamion::LocParcareCamion(int id, const Dimensiune &dim,double sarcinaMaxima,int numarAxePermise):
-	    LocParcare(id,dim),
+LocParcareCamion::LocParcareCamion(int id,double sarcinaMaxima,int numarAxePermise):
+	    LocParcare(id),
 	    sarcinaMaxima(sarcinaMaxima),
-	    numarAxePermise(numarAxePermise){vehiculAcceptat = "Camion";} 
+	    numarAxePermise(numarAxePermise)
+	    {
+	    dimensiune = Dimensiune::pentruLocCamion();
+	    vehiculAcceptat = "Camion";} 
 
 bool LocParcareCamion::acceptaVehicul(const Vehicul& v) const {
     if(v.categorieVehicul() != vehiculAcceptat){

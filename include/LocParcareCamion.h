@@ -9,7 +9,6 @@ private:
 
 public:
     LocParcareCamion(int id,
-                     const Dimensiune& dim,
                      double sarcinaMaxima,
                      int numarAxePermise);
 

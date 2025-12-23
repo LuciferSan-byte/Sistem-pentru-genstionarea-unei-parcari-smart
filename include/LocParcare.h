@@ -10,7 +10,7 @@ protected:
     std::string vehiculAcceptat; 
     Dimensiune dimensiune;
 public:
-    LocParcare(int id, const Dimensiune& dim);
+    LocParcare(int id);
     virtual ~LocParcare() = default;
     
     virtual bool incapeVehicul(const Vehicul& v) const;
