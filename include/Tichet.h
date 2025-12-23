@@ -1,22 +1,24 @@
 #pragma once
 
 #include <ctime>
+#include <chrono>
+#include <iostream>
 
 class Tichet {
 private:
     const int idTichet;
-    std::time_t oraIntrare;
-    std::time_t oraIesire;
+    std::chrono::system_clock::time_point oraIntrare;
+    std::chrono::system_clock::time_point oraIesire;
     double sumaDePlata;
     bool inchis;
 
 public:
     Tichet(int id);
 
-    void seteazaOraIesire(std::time_t t);
+    void seteazaOraIesire();
     void seteazaSuma(double suma);
     void inchide();
-
+ 
     bool esteInchis() const;
 };
 
