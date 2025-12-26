@@ -1,12 +1,12 @@
 #pragma once
+#include "Tichet.h"
+#include <chrono>
+#include <ctime>
 
-class Tichet;
-class Vehicul;
 
-class PoliticaPret {
+class PoliticaPret{
 public:
     virtual ~PoliticaPret() = default;
-    virtual double calculeazaPret(const Tichet& t,
-                                  const Vehicul& v) const = 0;
+    virtual double calculeazaPret(const Tichet &t)const = 0;
 };
 
