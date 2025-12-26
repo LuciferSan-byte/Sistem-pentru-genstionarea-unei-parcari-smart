@@ -18,7 +18,11 @@ public:
     void seteazaOraIesire();
     void seteazaSuma(double suma);
     void inchide();
- 
+    double obtineSuma()const;
+
+    std::chrono::system_clock::time_point  obtineOraIntrare() const;
+    std::chrono::system_clock::time_point  obtineOraIesire() const;
+
     bool esteInchis() const;
 };
 

@@ -7,12 +7,29 @@ Tichet::Tichet(int id):
 	}
 
 void Tichet::seteazaOraIesire(){
-    oreIesire = std::chrono:system_clock::now();
+    oraIesire = std::chrono::system_clock::now();
 }
 
 void Tichet::inchide(){
     inchis = true;
 }
+
 bool Tichet::esteInchis()const{
     return inchis;
+}
+
+std::chrono::system_clock::time_point Tichet::obtineOraIntrare()const{
+    return oraIntrare;
+}
+
+std::chrono::system_clock::time_point Tichet::obtineOraIesire()const{
+    return oraIesire;
+}
+
+void Tichet::seteazaSuma(double suma){
+    sumaDePlata = suma;
+}
+
+double Tichet::obtineSuma()const{
+    return sumaDePlata;
 }
