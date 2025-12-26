@@ -1,5 +1,14 @@
 #include "PretZi.h"
 
-PretZi::PretZi(std::chrono::system_clock::time_point oraStart, std::chrono::system_clock::time_point oraStop) : tarfiOra(5),
-							    oraStart(oraStart),
-							    oraStop(oraStop){}
+PretZi::PretZi():tarifOra(5){}
+
+double PretZi::calculeazaPret(const Tichet &t)const {
+    double minute = std::chrono::duration_cast<std::chrono::duration<double, std::ratio<3600>>>(t.obtineOraIesire()-t.obtineOraIntrare()).count();
+    return minute*tarifOra;
+}
+
+
+
+
+    
+
