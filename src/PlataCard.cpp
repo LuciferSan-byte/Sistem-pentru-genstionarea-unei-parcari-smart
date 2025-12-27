@@ -54,7 +54,7 @@ bool PlataCard::efectueazaPlata(double suma)const{
     int x = dist(gen);
     int y = dist(gen);
 
-    if(1 != 1){
+    if(x != y){
 	std::cout << "\nTranzactie Aprobata\n";
 	return true;
     }
