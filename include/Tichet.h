@@ -18,6 +18,8 @@ public:
     void seteazaOraIesire();
     void seteazaSuma(double suma);
     void inchide();
+
+    void afiseazaSuma()const;
     double obtineSuma()const;
 
     std::chrono::system_clock::time_point  obtineOraIntrare() const;
