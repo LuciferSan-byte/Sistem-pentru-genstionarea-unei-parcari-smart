@@ -1,5 +1,4 @@
 #include <iostream>
-#include <iomanip>
 
 #include "Sofer.h"
 
@@ -16,11 +15,6 @@
 #include "Tichet.h"
 #include "PoliticaPret.h"
 #include "PretZi.h"
-#include "PretNoapte.h"
-#include "PretWeekend.h"
-
-#include "PlataCard.h"
-#include "PlataCash.h"
 #include <thread>
 
 int main() {
@@ -149,18 +143,13 @@ int main() {
     
     Tichet t(1);
     
-    std::this_thread::sleep_for(std::chrono::seconds(2));
+    std::this_thread::sleep_for(std::chrono::seconds(60));
     t.seteazaOraIesire();
     t.inchide();
-    PretWeekend tarif;
+    PretZi tarif;
     std::cout << "tarif: " << tarif.calculeazaPret(t) << "\n";
     t.seteazaSuma(tarif.calculeazaPret(t));
-    t.afiseazaSuma();
-    PlataCard card;
-    card.efectueazaPlata(500);
-
-    PlataCash cash;
-    cash.efectueazaPlata(500);
+    std::cout << "suma: " << t.obtineSuma();
     std::cout << "\n===== TEST FINALIZAT CU SUCCES =====\n";
     return 0;
 }

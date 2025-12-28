@@ -7,7 +7,8 @@ Abonament::Abonament(const int &id,std::string tipul):
 {
 }
 
-void Abonament::incepereAbonament(){
+void Abonament::incepereAbonament()
+{
      start = std::chrono::system_clock::now();
      expire = start + std::chrono::days{30};
 
@@ -16,32 +17,32 @@ void Abonament::incepereAbonament(){
     this->afiseazaInceputAbonament();
     this->afiseazaExpirareAbonament();
 }
-bool Abonament::esteActv()const{
+bool Abonament::esteActv()const {
     return esteActiv;
 }
-bool Abonament::esteValid()const{
+bool Abonament::esteValid()const {
     return std::chrono::system_clock::now() < expire;
 }
-void Abonament::reinoiesteAbonamentLunar(){
+void Abonament::reinoiesteAbonamentLunar() {
     expire += std::chrono::days{30};
 }
-void Abonament::reinoiesteAbonamentAnual(){
+void Abonament::reinoiesteAbonamentAnual() {
     expire += std::chrono::days{365};
 }
 
-std::string Abonament::obtineTip()const{
+std::string Abonament::obtineTip()const {
     return tip;
 }
 
-std::chrono::system_clock::time_point Abonament::obtineStart()const{
+std::chrono::system_clock::time_point Abonament::obtineStart()const {
     return start;
 }
 
-std::chrono::system_clock::time_point Abonament::obtineExpire()const{
+std::chrono::system_clock::time_point Abonament::obtineExpire()const {
     return expire;
 }
 
-void Abonament::afiseazaInceputAbonament()const{
+void Abonament::afiseazaInceputAbonament()const {
     std::time_t t = std::chrono::system_clock::to_time_t(start);
     if(!t){
 	std::cerr << "\nNu exista Abonamnet activ\n";
@@ -51,7 +52,7 @@ void Abonament::afiseazaInceputAbonament()const{
     std::cout << "\nAbonamentul a fost activat pe data de : ";
     std::cout << std::ctime(&t);
 }
-void Abonament::afiseazaExpirareAbonament()const{
+void Abonament::afiseazaExpirareAbonament()const {
     std::time_t t = std::chrono::system_clock::to_time_t(expire);
     if(!t){
 	std::cerr << "\nNu exista Abonamnet activ\n";

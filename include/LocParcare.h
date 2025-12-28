@@ -2,6 +2,7 @@
 
 #include "Dimensiune.h"
 #include "Vehicul.h"
+#include "Sofer.h"
 #include <vector>
 class LocParcare{
 protected:

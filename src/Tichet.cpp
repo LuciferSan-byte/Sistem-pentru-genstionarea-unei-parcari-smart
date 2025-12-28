@@ -33,7 +33,6 @@ void Tichet::seteazaSuma(double suma){
 double Tichet::obtineSuma()const{
     return sumaDePlata;
 }
-
 void Tichet::afiseazaSuma()const{
     std::cout << "Suma de Plata ";
     std::cout << std::fixed << std::setprecision(2) << sumaDePlata << " Lei";
