@@ -13,9 +13,13 @@ this->dimensiune = dim;
 this->greutate = greutate;
 }
 
-Dimensiune Vehicul::obtineDimensiune()const {
+Dimensiune Vehicul::obtineDimensiune() const {
     return dimensiune;
 }
 double Vehicul::obtineGreutate() const {
     return greutate;
 }
+std::string Vehicul::obtineNumarInmatriculare() const{
+    return numarInmatriculare;
+} 
+

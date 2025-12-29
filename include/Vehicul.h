@@ -17,10 +17,12 @@ public:
 	double greutate
     );
     virtual ~Vehicul() = default;
-    Dimensiune obtineDimensiune()const;
-    double obtineGreutate()const;
-    
-    virtual bool esteElectric()const  = 0;
+    Dimensiune obtineDimensiune() const;
+    double obtineGreutate() const;
+    std::string obtineNumarInmatriculare() const;
+
+
+    virtual bool esteElectric() const  = 0;
     virtual std::string categorieVehicul() const  = 0;
-    virtual int obtineNumarAxe()const = 0;
+    virtual int obtineNumarAxe() const = 0;
 };
