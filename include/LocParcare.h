@@ -3,6 +3,9 @@
 #include "Dimensiune.h"
 #include "Vehicul.h"
 #include "Sofer.h"
+#include "Led.h"
+
+#include <iostream>
 #include <vector>
 class LocParcare{
 protected:
@@ -10,6 +13,7 @@ protected:
     bool ocupat;
     std::string vehiculAcceptat; 
     Dimensiune dimensiune;
+    Led led;
 public:
     LocParcare(int id);
     virtual ~LocParcare() = default;
@@ -20,4 +24,6 @@ public:
     void ocupa();
     void elibereaza();
     bool esteOcupat() const;
+
+    void afiseazaStare() const;
 };
