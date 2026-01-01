@@ -1,12 +1,26 @@
 #include "LocParcare.h"
 #include "Dimensiune.h"
 LocParcare::LocParcare(int idLoc)
-    : idLoc(idLoc), ocupat(false),vehiculAcceptat("Masina"), led()
+    : idLoc(idLoc), ocupat(false),vehiculAcceptat("Masina"), led(), senzor(idLoc) 
 {
     dimensiune = Dimensiune::pentruLocMasina();
 }
 
+void LocParcare::detecteazaVehicul(){
+    senzor.detecteaza();
 
+    if(!ocupat){
+	ocupa();
+    }
+}
+
+void LocParcare::vehiculPleaca() {
+    senzor.elibereaza();
+
+    if(ocupat){
+	elibereaza();
+    }
+}
 
 bool LocParcare::incapeVehicul(const Vehicul &v)const{
     return v.obtineDimensiune().incapeIn(dimensiune);   
