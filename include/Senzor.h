@@ -3,13 +3,13 @@
 class Senzor {
 protected:
     const int idSenzor;
-    bool stare;
-
+    bool vehiculDetectat;
 public:
     Senzor(int id);
     virtual ~Senzor() = default;
+    virtual void detecteaza();
+    virtual void elibereaza() ;
 
-    virtual bool detecteazaPrezenta() const;
-    virtual void reseteaza();
+    bool esteActiv() const; 
 };
 
