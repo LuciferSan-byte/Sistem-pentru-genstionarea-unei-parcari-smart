@@ -3,16 +3,17 @@
 #include <string>
 #include "Camera.h"
 #include "Senzor.h"
+#include "Vehicul.h"
 
 class SenzorInteligent : public Camera, public Senzor {
 private:
-    std::string locatie;
+    std::string ultimulNumarDetectat;
 
 public:
-    SenzorInteligent(int id, const std::string& locatie);
+   explicit SenzorInteligent(int id);
 
-    bool detecteazaPrezenta() const override;
-    std::string captureazaImagine() const override;
-    std::string recunoasteNumar() const override;
+    bool proceseazaVehicul(const Vehicul &v);
+
+    std::string obtineUltimulNumar() const;
 };
 
