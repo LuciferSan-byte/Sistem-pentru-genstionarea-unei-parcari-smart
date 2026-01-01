@@ -4,7 +4,7 @@
 #include "Vehicul.h"
 #include "Sofer.h"
 #include "Led.h"
-#include "Senzor.h"
+#include "SenzorInteligent.h"
 
 #include <iostream>
 #include <vector>
@@ -15,7 +15,7 @@ protected:
     std::string vehiculAcceptat; 
     Dimensiune dimensiune;
     Led led;
-    Senzor senzor;
+    SenzorInteligent senzor;
 public:
     LocParcare(int id);
     virtual ~LocParcare() = default;
