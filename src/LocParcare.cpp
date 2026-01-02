@@ -1,9 +1,10 @@
 #include "LocParcare.h"
 #include "Dimensiune.h"
 LocParcare::LocParcare(int idLoc)
-    : idLoc(idLoc), ocupat(false),vehiculAcceptat("Masina"), led(), senzor(idLoc) 
+    : idLoc(idLoc), ocupat(false),vehiculAcceptat("Masina"), led(), senzor(idLoc),electric(false) 
 {
     dimensiune = Dimensiune::pentruLocMasina();
+    handicap = false;
 }
 
 void LocParcare::detecteazaVehicul(){
@@ -46,3 +47,21 @@ void LocParcare::afiseazaStare() const{
     std::cout << "Loc " << idLoc << ": ";
     led.afiseaza();
 }
+
+bool LocParcare::esteElectric() const{
+    return electric;
+}
+
+bool LocParcare::esteHandicap() const{
+    return handicap;
+}
+
+std::string LocParcare::obtineVehiculAcceptat() const{
+    return vehiculAcceptat;
+}
+
+Dimensiune LocParcare::obtineDimensiune() const {
+    return dimensiune;
+}
+
+int LocParcare::obtineId() const { return idLoc;}
