@@ -1,11 +1,13 @@
 #include "LocParcareHandicap.h"
 
-LocParcareHandicap::LocParcareHandicap(int id,double latimeZonaAcces,bool aproapeIntrare):
+LocParcareHandicap::LocParcareHandicap(int id,double latimeZonaAcces,bool aproapeIntrare, bool electric):
 		    LocParcare(id),
 		    latimeZonaAcces(latimeZonaAcces),
-		    aproapeIntrare(aproapeIntrare)
+		    aproapeIntrare(aproapeIntrare) 
 		    {dimensiune = Dimensiune::pentruLocMasina();
 		     vehiculAcceptat = "Masina";
+		     this->electric = electric;
+		     handicap = true;
 		    }
 
 bool LocParcareHandicap::acceptaVehicul(const Vehicul &v)const{

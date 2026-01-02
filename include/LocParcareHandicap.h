@@ -10,11 +10,13 @@ private:
 public:
     LocParcareHandicap(int id,
                        double latimeZonaAcces,
-                       bool aproapeIntrare);
+                       bool aproapeIntrare,
+		       bool electric);
 
     bool acceptaVehicul(const Vehicul& v) const override;
     bool acceptaSofer(const Sofer& s)const;
     bool esteAccesibil() const;
+
 
 };
 
