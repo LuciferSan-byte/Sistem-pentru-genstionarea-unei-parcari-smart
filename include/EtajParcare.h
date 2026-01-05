@@ -17,11 +17,16 @@ public:
     
     bool areLocLiber(const Vehicul& v) const;
     int  numarLocuriLibere() const;
+    
+    bool verificaLocOcupat(const int & Id) const;
 
     bool parcheazaPeLoc(int idLoc, const Vehicul &v) const;
     bool parcheazaAutomat(const Vehicul &v) const;
     
     void nrLocuriLiberePeCategorii() const;
     void afiseazaStareEtaj() const;
+   
+    bool elibereazaLoc(int idLoc);
+    int obtineNrEtaj() const;
 };
 

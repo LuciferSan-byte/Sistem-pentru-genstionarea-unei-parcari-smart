@@ -1,29 +1,45 @@
 #pragma once
 
 #include <vector>
-#include "Parcare.h"
-#include "Tichet.h"
-#include "Abonament.h"
+#include <unordered_map>
 
-class Vehicul;
-class Sofer;
-class LocParcare;
+#include "EtajParcare.h"
+#include "LocParcare.h"
+#include "Vehicul.h"
+#include "ControlPoarta.h"
+#include "Tichet.h"
+#include "PlataCard.h"
+#include "PlataCash.h"
+#include "PretZi.h"
+#include "PretWeekend.h"
+#include "PretNoapte.h"
 
 class SistemParcare {
 private:
-    Parcare parcare;
+    std::vector<EtajParcare*> etaje;
     std::vector<Tichet> ticheteActive;
-    std::vector<Vehicul*> vehicule;
-    std::vector<Abonament> abonamente;
 
+    ControlPoarta barieraIntrare;
+    ControlPoarta barieraIesire;
+    
+    PretZi politicaZi;
+    PretNoapte politicaNoapte;
+    PretWeekend politicaWeekend;
+
+    int nextTichetId;
 public:
-    SistemParcare(const Parcare& parcare);
+    SistemParcare();
 
-    void inregistreazaVehicul(Vehicul* v);
-    Tichet creeazaTichet(Vehicul* v);
-    void inchideTichet(int idTichet);
+    void adaugaEtaj(EtajParcare* etaj);
+    
+    bool parcheazaPeLoc(Vehicul& v, int numarEtaj, int idLoc);
+    bool parcheazaAutomat(Vehicul& v);
 
-    LocParcare* alocaLoc(const Vehicul& v);
-    bool valideazaAcces(const Vehicul& v, const Sofer& s) const;
+    Tichet& vehiculIntra(Vehicul& v);
+    bool vehiculIese(int idTichet);
+    
+    PoliticaPret* alegePoliticaPret(const Tichet& t) const;
+    bool proceseazaPlata(int idTichet);
+
 };
 

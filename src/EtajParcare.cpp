@@ -134,3 +134,37 @@ void EtajParcare::afiseazaStareEtaj() const{
 	std::cout << "\n\n-----------------\n\n";
 	}
     }
+
+int EtajParcare::obtineNrEtaj() const { return numarEtaj;}
+
+bool EtajParcare::verificaLocOcupat(const int & Id) const {
+    for(auto &loc : locuriParcare){
+	if(Id == loc->obtineId())
+	    if(loc->esteOcupat() == false) return true;
+	    else{
+		std::cout << "Loc ocupat\n ";
+		return false;
+	    }
+    }
+    std::cout << "Loc inexistent\n";
+    return false;
+}
+
+bool EtajParcare::elibereazaLoc(int idLoc) {
+    for (auto& loc : locuriParcare) {
+        if (loc->obtineId() == idLoc) {
+
+            if (!loc->esteOcupat()) {
+                std::cout << "Locul " << idLoc << " este deja liber\n";
+                return false;
+            }
+
+            loc->vehiculPleaca(); 
+	    std::cout << "Locul " << idLoc << " a fost eliberat\n";
+            return true;
+        }
+    }
+
+    std::cout << "Locul " << idLoc << " nu exista\n";
+    return false;
+}
