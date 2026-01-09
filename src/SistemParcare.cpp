@@ -10,80 +10,92 @@ void SistemParcare::adaugaEtaj(EtajParcare *etaj){
     etaje.push_back(etaj);
 }
 
-bool SistemParcare::parcheazaPeLoc(Vehicul& v, int numarEtaj, int idLoc) {
-    for (auto& etaj : etaje) {
-        if (etaj->obtineNrEtaj() == numarEtaj) {
-	    if(!etaj->verificaLocOcupat(idLoc)){
-		return false;
-	    }
-            if (!etaj->parcheazaPeLoc(idLoc, v)) {
-		std::cout << "Nu s-a putut parca\n";
-		return false;
-            }
-	    std::cout <<"Vehicul parcat cu succes\n";
-	    return true;
-        }
-    }
-
-    std::cout << "Etaj inexistent.\n";
-    return false;
-}
-
-bool SistemParcare::parcheazaAutomat(Vehicul& v) {
-    for (auto& etaj : etaje) {
-        if (etaj->areLocLiber(v)) {
-            return etaj->parcheazaAutomat(v);
-        }
-    }
-
-    std::cout << "Nu exista loc liber\n";
-    return false;
-}
-
-Tichet& SistemParcare::vehiculIntra(Vehicul& v) {
-
-    if (!parcheazaAutomat(v)) {
-        throw std::runtime_error("Intrare refuzata: nu exista loc");
-    }
+int SistemParcare::vehiculIntraAutomat(Vehicul& v) {
 
     Tichet t(nextTichetId++);
     t.seteazaVehicul(&v);
-    ticheteActive.push_back(t);
 
-    barieraIntrare.deschide();
+    for (auto& etaj : etaje) {
+        if (etaj->parcheazaAutomat(v, t)) {
 
-    std::cout << "Vehicul intrat. Tichet ID: "
-              << ticheteActive.back().obtineId() << "\n";
+            ticheteActive.push_back(t);
+            barieraIntrare.deschide();
 
-    return ticheteActive.back();
+            std::cout << "Vehicul intrat AUTOMAT. Tichet ID: "
+                      << ticheteActive.back().obtineId() << "\n";
+
+            return ticheteActive.back().obtineId();
+        }
+    }
+
+    throw std::runtime_error("Nu exista loc liber");
+}
+
+int SistemParcare::vehiculIntraPeLoc(Vehicul& v,
+                                         int nrEtaj,
+                                         int idLoc)
+{
+    Tichet t(nextTichetId++);
+    t.seteazaVehicul(&v);
+
+    for (auto& etaj : etaje) {
+        if (etaj->obtineNrEtaj() == nrEtaj) {
+
+            if (!etaj->parcheazaPeLoc(idLoc, v, t)) {
+		std::cout << "\nParcare manuala esuata\n";
+		return -1;
+	    }
+
+
+            ticheteActive.push_back(t);
+            barieraIntrare.deschide();
+
+            std::cout << "Vehicul intrat MANUAL. Tichet ID: "
+                      << ticheteActive.back().obtineId() << "\n";
+
+            return ticheteActive.back().obtineId();
+        }
+    }
+
+    throw std::runtime_error("Etaj inexistent");
 }
 
 bool SistemParcare::vehiculIese(int idTichet) {
-    for (auto it = ticheteActive.begin();
-         it != ticheteActive.end(); ++it) {
+    for (auto it = ticheteActive.begin(); it != ticheteActive.end(); ++it) {
 
         if (it->obtineId() == idTichet) {
 
-            it->seteazaOraIesire();
-            ticheteActive.erase(it);
+            if (!it->esteInchis()) {
+                std::cout << "Plata nu a fost efectuata!\n";
+                return false;
+            }
+
+            int idLoc = it->obtineIdLoc();
+
+            for (auto& etaj : etaje) {
+                if (etaj->elibereazaLoc(idLoc)) {
+                    break;
+                }
+            }
 
             barieraIesire.deschide();
-            std::cout << "Vehicul iesit\n";
+            ticheteActive.erase(it);
+
+            std::cout << "Vehicul poate iesi din parcare\n";
             return true;
         }
     }
 
-    std::cout << "Tichet invalid\n";
-    return false;
+    std::cout << "Tichet inexistent\n";
+    return false; 
 }
 
 bool SistemParcare::proceseazaPlata(int idTichet) {
-  
     for (auto it = ticheteActive.begin();
-         it != ticheteActive.end(); ++it) {
-
-        if (it->obtineId() == idTichet) {
-
+         it != ticheteActive.end(); ++it)
+    {
+        if (it->obtineId() == idTichet)
+        {
             int minute;
             std::cout << "Cate minute doriti sa stati in parcare? ";
             std::cin >> minute;
@@ -121,23 +133,31 @@ bool SistemParcare::proceseazaPlata(int idTichet) {
                 }
             }
 
+            std::cout << "Plata efectuata cu succes\n";
+
+            // 🔑 SALVEZI idLoc ÎNAINTE de erase
+            int idLoc = it->obtineIdLoc();
+
             it->inchide();
             ticheteActive.erase(it);
+
+            // 🔑 ELIBERARE LOC
+            for (auto& etaj : etaje) {
+                if (etaj->elibereazaLoc(idLoc)) {
+                    break;
+                }
+            }
+
+            // 🔑 POARTA IESIRE
             barieraIesire.deschide();
-	    
-	    for (auto& etaj : etaje) {
-	       if (etaj->elibereazaLoc(it->obtineIdLoc())) {
-		    break;
-		}
-	    }	
+
             std::cout << "Vehicul poate iesi din parcare\n";
             return true;
         }
     }
 
     std::cout << "Tichet inexistent\n";
-    return false;
-
+    return false;   
 }
 
 

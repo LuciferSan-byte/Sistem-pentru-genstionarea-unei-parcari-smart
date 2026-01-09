@@ -2,6 +2,8 @@
 
 #include <vector>
 #include <iostream>
+#include "Tichet.h"
+
 class LocParcare;
 class Vehicul;
 
@@ -20,8 +22,8 @@ public:
     
     bool verificaLocOcupat(const int & Id) const;
 
-    bool parcheazaPeLoc(int idLoc, const Vehicul &v) const;
-    bool parcheazaAutomat(const Vehicul &v) const;
+    bool parcheazaPeLoc(int idLoc, const Vehicul &v, Tichet &t) const;
+    bool parcheazaAutomat(const Vehicul &v, Tichet & t) const;
     
     void nrLocuriLiberePeCategorii() const;
     void afiseazaStareEtaj() const;

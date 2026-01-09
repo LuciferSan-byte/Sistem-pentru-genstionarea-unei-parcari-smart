@@ -11,7 +11,6 @@ private:
     Vehicul* vehicul;
     int idLoc;
 
-
     std::chrono::system_clock::time_point oraIntrare;
     std::chrono::system_clock::time_point oraIesire;
     double sumaDePlata;

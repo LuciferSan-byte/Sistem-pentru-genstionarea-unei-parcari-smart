@@ -10,7 +10,7 @@ void EtajParcare::adaugaLoc(LocParcare* loc){
 }
 
 
-bool EtajParcare::parcheazaPeLoc(int idLoc, const Vehicul & v) const{
+bool EtajParcare::parcheazaPeLoc(int idLoc, const Vehicul & v, Tichet &t) const{
     for(auto& loc : locuriParcare) {
 	if(loc->obtineId() == idLoc){
 	    
@@ -26,6 +26,8 @@ bool EtajParcare::parcheazaPeLoc(int idLoc, const Vehicul & v) const{
 
 	loc->ocupa();
 	std::cout << "Vehicul parcat pe locul ales: " << idLoc << "\n";
+	loc->detecteazaVehicul();              
+	t.seteazaIdLoc(loc->obtineId());
 	return true;
 	}
     }
@@ -34,12 +36,14 @@ bool EtajParcare::parcheazaPeLoc(int idLoc, const Vehicul & v) const{
     return false;
 }
 
-bool EtajParcare::parcheazaAutomat(const Vehicul &v) const{
+bool EtajParcare::parcheazaAutomat(const Vehicul &v, Tichet &t) const{
     for(auto &loc : locuriParcare){
 	if(!loc->esteOcupat() && loc->acceptaVehicul(v)){
 	    loc->ocupa();
 	    std::cout << "Vehicul parcat automat pe locul "
 		      << loc->obtineId() << "\n";
+	    loc->detecteazaVehicul();              
+	    t.seteazaIdLoc(loc->obtineId());       
 	    return true;
 	}
     }
@@ -151,20 +155,17 @@ bool EtajParcare::verificaLocOcupat(const int & Id) const {
 }
 
 bool EtajParcare::elibereazaLoc(int idLoc) {
-    for (auto& loc : locuriParcare) {
+      for (auto& loc : locuriParcare) {
         if (loc->obtineId() == idLoc) {
 
             if (!loc->esteOcupat()) {
-                std::cout << "Locul " << idLoc << " este deja liber\n";
                 return false;
             }
 
-            loc->vehiculPleaca(); 
-	    std::cout << "Locul " << idLoc << " a fost eliberat\n";
+            loc->vehiculPleaca();
+            std::cout << "Locul " << idLoc << " a fost eliberat\n";
             return true;
         }
     }
-
-    std::cout << "Locul " << idLoc << " nu exista\n";
     return false;
 }

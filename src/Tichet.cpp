@@ -2,6 +2,8 @@
 
 Tichet::Tichet(int id):
 	idTichet(id),
+	idLoc(-1),
+	sumaDePlata(0.00),
 	vehicul(nullptr),
 	oraIntrare(std::chrono::system_clock::now()) {}
 

@@ -32,14 +32,14 @@ public:
 
     void adaugaEtaj(EtajParcare* etaj);
     
-    bool parcheazaPeLoc(Vehicul& v, int numarEtaj, int idLoc);
-    bool parcheazaAutomat(Vehicul& v);
-
-    Tichet& vehiculIntra(Vehicul& v);
-    bool vehiculIese(int idTichet);
+    int vehiculIntraAutomat(Vehicul& v);
+    int vehiculIntraPeLoc(Vehicul& v,
+                               int nrEtaj,
+                               int idLoc);
+ 
     
     PoliticaPret* alegePoliticaPret(const Tichet& t) const;
     bool proceseazaPlata(int idTichet);
-
+    bool vehiculIese(int idTichet);
 };
 
