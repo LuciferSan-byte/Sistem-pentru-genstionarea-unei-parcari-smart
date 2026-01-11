@@ -23,12 +23,13 @@ public:
     void reinoiesteAbonamentLunar();
     void reinoiesteAbonamentAnual();
 
-
     std::chrono::system_clock::time_point obtineStart()const;
     std::chrono::system_clock::time_point obtineExpire()const;
 
     void afiseazaInceputAbonament()const;
     void afiseazaExpirareAbonament()const;
     std::string obtineTip() const;
+
+    friend void afiseazaAbonament(const Abonament& a);
 };
 

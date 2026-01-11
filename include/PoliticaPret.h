@@ -7,6 +7,6 @@
 class PoliticaPret{
 public:
     virtual ~PoliticaPret() = default;
-    virtual double calculeazaPret(const Tichet &t)const = 0;
+    virtual inline double calculeazaPret(const Tichet &t)const = 0;
 };
 

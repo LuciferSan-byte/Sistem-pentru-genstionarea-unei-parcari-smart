@@ -62,3 +62,21 @@ void Abonament::afiseazaExpirareAbonament()const {
     std::cout << "Abonamentul este valid pana pe data de : ";
     std::cout << std::ctime(&t);
 }
+
+void afiseazaAbonament(const Abonament& a)
+{
+    if (!a.esteActiv) {
+        std::cerr << "Nu exista abonament activ.\n";
+        return;
+    }
+
+    std::time_t start = std::chrono::system_clock::to_time_t(a.start);
+    std::time_t exp   = std::chrono::system_clock::to_time_t(a.expire);
+
+    std::cout << "\n--- Detalii Abonament ---\n";
+    std::cout << "Tip: " << a.tip << '\n';
+    std::cout << "ID: " << a.idAbonament << '\n';
+    std::cout << "Activat la: " << std::ctime(&start);
+    std::cout << "Expira la:  " << std::ctime(&exp);
+}
+
