@@ -17,13 +17,13 @@ public:
 
     void adaugaLoc(LocParcare* loc);
     
-    bool areLocLiber(const Vehicul& v) const;
+    bool areLocLiber(const Vehicul& v, int id) const;
     int  numarLocuriLibere() const;
     
     bool verificaLocOcupat(const int & Id) const;
 
-    bool parcheazaPeLoc(int idLoc, const Vehicul &v, Tichet &t) const;
-    bool parcheazaAutomat(const Vehicul &v, Tichet & t) const;
+    bool parcheazaPeLoc(int idLoc, const Vehicul &v, Tichet &t, bool Handicap) const;
+    bool parcheazaAutomat(const Vehicul &v, Tichet & t, bool Handicap) const;
     
     void nrLocuriLiberePeCategorii() const;
     void afiseazaStareEtaj() const;

@@ -12,9 +12,9 @@ CuloareLed Led::obtineCuloare() const{
 
 void Led::afiseaza() const{
     if (culoare == CuloareLed::Verde)
-	std::cout << "[LED] 🟢 LIBER\n";
+	std::cout << "[LED] {VERDE} LIBER\n";
     else 
-	std::cout << "[LED] 🔴 OCUPAT\n";
+	std::cout << "[LED] {ROSU} OCUPAT\n";
 }
 
 

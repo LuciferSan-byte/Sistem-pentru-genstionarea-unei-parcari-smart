@@ -10,9 +10,6 @@ LocParcareHandicap::LocParcareHandicap(int id,double latimeZonaAcces,bool aproap
 		     handicap = true;
 		    }
 
-bool LocParcareHandicap::acceptaVehicul(const Vehicul &v)const{
-    return v.categorieVehicul() != vehiculAcceptat;
-}
 
 bool LocParcareHandicap::acceptaSofer(const Sofer& s)const{
     return s.arePermisH();

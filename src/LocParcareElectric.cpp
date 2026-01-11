@@ -5,7 +5,9 @@ LocParcareElectric::LocParcareElectric(int id, double putere,const std::string &
 		    :LocParcare(id),
 		    putereIncarcare(putere),
 		    tipConector(conector) 
-{dimensiune = Dimensiune::pentruLocMasina();}
+{dimensiune = Dimensiune::pentruLocMasina();
+ electric = true;
+}
 
 bool LocParcareElectric::acceptaVehicul(const Vehicul& v)const{
     return v.categorieVehicul() == vehiculAcceptat && v.esteElectric() == true;

@@ -10,7 +10,7 @@ void EtajParcare::adaugaLoc(LocParcare* loc){
 }
 
 
-bool EtajParcare::parcheazaPeLoc(int idLoc, const Vehicul & v, Tichet &t) const{
+bool EtajParcare::parcheazaPeLoc(int idLoc, const Vehicul & v, Tichet &t, bool Handicap) const{
     for(auto& loc : locuriParcare) {
 	if(loc->obtineId() == idLoc){
 	    
@@ -18,15 +18,20 @@ bool EtajParcare::parcheazaPeLoc(int idLoc, const Vehicul & v, Tichet &t) const{
 		std::cout << "Locul " << loc->obtineId() << " este deja ocupat\n";
 		return false;
 	    }
-	
+	    std::cout << "siuuuuuuuu2";
 	if(!loc->acceptaVehicul(v)){
 	    std::cout << "Vehiculul nu este acceptat pe locul " << loc->obtineId() << "\n";
 	    return false;
 	}
 
-	loc->ocupa();
+	if(loc->esteHandicap() == true){
+	    if(Handicap == false){
+		std::cout << "Locul este destinat persoanelor cu dizabilitati";
+		return false;
+		}
+	}
+	loc->detecteazaVehicul();
 	std::cout << "Vehicul parcat pe locul ales: " << idLoc << "\n";
-	loc->detecteazaVehicul();              
 	t.seteazaIdLoc(loc->obtineId());
 	return true;
 	}
@@ -36,12 +41,13 @@ bool EtajParcare::parcheazaPeLoc(int idLoc, const Vehicul & v, Tichet &t) const{
     return false;
 }
 
-bool EtajParcare::parcheazaAutomat(const Vehicul &v, Tichet &t) const{
+bool EtajParcare::parcheazaAutomat(const Vehicul &v, Tichet &t, bool Handicap) const{
     for(auto &loc : locuriParcare){
 	if(!loc->esteOcupat() && loc->acceptaVehicul(v)){
-	    loc->ocupa();
+	   
 	    std::cout << "Vehicul parcat automat pe locul "
 		      << loc->obtineId() << "\n";
+
 	    loc->detecteazaVehicul();              
 	    t.seteazaIdLoc(loc->obtineId());       
 	    return true;
@@ -51,12 +57,16 @@ bool EtajParcare::parcheazaAutomat(const Vehicul &v, Tichet &t) const{
     return false;
 }
 
-bool EtajParcare::areLocLiber(const Vehicul & v) const{
+bool EtajParcare::areLocLiber(const Vehicul & v, int id) const{
     for(const auto & loc : locuriParcare){
+	if(loc->obtineId() == id){
 	if(!loc->esteOcupat() && loc->acceptaVehicul(v)){
+	    std::cout << "Vehicul poate parca pe locul cu ID: " << id;
 	    return true;
 	}
+	}
     }
+    std::cout << "Vehicul nu poate parca pe locul cu ID: " << id;
     return false;
 }
 
@@ -144,7 +154,10 @@ int EtajParcare::obtineNrEtaj() const { return numarEtaj;}
 bool EtajParcare::verificaLocOcupat(const int & Id) const {
     for(auto &loc : locuriParcare){
 	if(Id == loc->obtineId())
-	    if(loc->esteOcupat() == false) return true;
+	    if(loc->esteOcupat() == false){
+		std::cout << "Locul este liber ";
+		return true;
+	    }
 	    else{
 		std::cout << "Loc ocupat\n ";
 		return false;

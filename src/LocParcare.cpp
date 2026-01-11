@@ -8,14 +8,15 @@ LocParcare::LocParcare(int idLoc)
 }
 
 void LocParcare::detecteazaVehicul(){
+    std::cout << "\nVehicul detectat pe locul cu id: " << obtineId() << "\n";
     senzor.detecteaza();
-
     if(!ocupat){
 	ocupa();
     }
 }
 
 void LocParcare::vehiculPleaca() {
+    std::cout << "\nVehiculul a parasit locul cu id: " << obtineId() << "\n";
     senzor.elibereaza();
 
     if(ocupat){
@@ -29,10 +30,12 @@ bool LocParcare::incapeVehicul(const Vehicul &v)const{
 
 void LocParcare::ocupa(){
     ocupat = true;
+    std::cout << "Led: {Verde} -> {Rosu}\n";
     led.seteazaCuloarea(CuloareLed::Rosu);
 }
 void LocParcare::elibereaza(){
     ocupat = false;
+    std::cout << "Led: {Rosu} -> {Verde}\n";
     led.seteazaCuloarea(CuloareLed::Verde);
 }
 bool LocParcare::esteOcupat() const{

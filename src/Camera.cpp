@@ -1,11 +1,14 @@
 #include "Camera.h"
+#include <limits>
 
 bool Camera::captureazaImagine() const{
     std::cout << "Camera: se asteapta un vehicul...\n";
+    
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     std::cout << "Apasa ENTER pentru a simula trecerea vehiculului.\n";
+    std::cin.get(); 
 
-    std::cin.get();
-    for (int i = 0; i <= 15; i++) {
+    for (int i = 0; i <= 10; i++) {
         std::cout << "\r";             
 
         for (int j = 0; j < i; j++) {
@@ -22,7 +25,7 @@ bool Camera::captureazaImagine() const{
 
 std::string Camera::recunoasteNumar(const Vehicul & v)const{
     
-    std::cout << "Se incearca recunoasterea numarului\n";
+    std::cout << "Camera: Se incearca recunoasterea numarului\n";
     
     for (int i = 0; i < 3; i++){
 	std::cout << "\r";
@@ -35,7 +38,7 @@ std::string Camera::recunoasteNumar(const Vehicul & v)const{
     }
 
     std::cout << "\nNumarul a fost recunoscut cu succes\n";
-    std::cout << "Numarul recunoscut: " << v.obtineNumarInmatriculare();
+    std::cout << "Numarul recunoscut: " << v.obtineNumarInmatriculare() << "\n";
     return v.obtineNumarInmatriculare();
 
 }

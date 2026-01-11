@@ -11,7 +11,7 @@ void ControlPoarta::deschide() {
     }
     
     
-    std::cout << "Se deschide Poarta";
+    std::cout << "\nSe deschide Poarta";
     for (int i = 0; i < 3; ++i) {
         std::cout << "." << std::flush;
         std::this_thread::sleep_for(std::chrono::milliseconds(400));
@@ -27,7 +27,7 @@ void ControlPoarta::inchide(){
         return;
     }
 
-    std::cout << "Se inchide Poarta";
+    std::cout << "\n\nSe inchide Poarta";
     for (int i = 0; i < 3; ++i) {
         std::cout << "." << std::flush;
         std::this_thread::sleep_for(std::chrono::milliseconds(400));
