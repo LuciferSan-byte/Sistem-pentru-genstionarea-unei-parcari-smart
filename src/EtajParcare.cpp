@@ -18,7 +18,6 @@ bool EtajParcare::parcheazaPeLoc(int idLoc, const Vehicul & v, Tichet &t, bool H
 		std::cout << "Locul " << loc->obtineId() << " este deja ocupat\n";
 		return false;
 	    }
-	    std::cout << "siuuuuuuuu2";
 	if(!loc->acceptaVehicul(v)){
 	    std::cout << "Vehiculul nu este acceptat pe locul " << loc->obtineId() << "\n";
 	    return false;
